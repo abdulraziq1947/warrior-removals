@@ -1,0 +1,58 @@
+export const business = {
+  name: "Warrior Removals",
+  legalName: "Warrior Removals",
+  url: "https://wiganremoval.co.uk",
+  email: "info@wiganremoval.co.uk",
+  phone: "01942565786",
+  phoneDisplay: "01942 565786",
+  phoneE164: "+441942565786",
+  address: {
+    streetAddress: "61-69 Standishgate",
+    addressLocality: "Wigan",
+    addressRegion: "Greater Manchester",
+    postalCode: "WN1 1AH",
+    addressCountry: "GB",
+  },
+  geo: { latitude: 53.54865, longitude: -2.629635 },
+  gmbCid: "854997812275801616",
+  hours: {
+    opens: "07:00",
+    closes: "21:00",
+    label: "7am-9pm",
+    days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+  },
+  rating: { value: 5.0, count: 90, display: "5.0" },
+  insurance: {
+    goodsInTransit: "50000",
+    publicLiability: "1000000",
+    goodsLabel: "£50k GIT",
+    liabilityLabel: "£1m PL",
+  },
+  fleet: { licence: "No O-licence", vehicles: "3.5-tonne Luton vans" },
+  servicesNotOffered: [
+    "waste or rubbish clearance",
+    "international removals",
+    "single-item courier moves",
+    "storage",
+    "man-and-van only services",
+  ],
+  sameAs: [
+    "https://www.google.com/maps?cid=854997812275801616",
+    "https://sirelo.co.uk/removal-company/wigan/warrior-removals/",
+    "https://topratedmovers.co.uk/england/greater-manchester/wigan/warrior-removals-wigan/",
+  ],
+  wikidata: {
+    wigan: "Q164161",
+    borough: "Q208211",
+    greaterManchester: "Q23099",
+  },
+  disambiguatingDescription:
+    "Professional household and commercial removals company serving Wigan and Greater Manchester. We move homes, offices, students, pianos and furniture. We are not a waste clearance or rubbish removal service.",
+  hasMap: "https://www.google.com/maps?cid=854997812275801616",
+  priceRange: "££",
+  pricing: {
+    hourlyRate: 90,
+    minimumHours: 3,
+    currency: "GBP",
+  },
+} as const;

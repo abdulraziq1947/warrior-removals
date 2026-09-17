@@ -1,0 +1,107 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import CtaBand from "../components/CtaBand.astro";
+import Icon from "../components/Icon.astro";
+import { business } from "../data/business";
+import { buildSchemaGraph } from "../lib/schema/graph";
+import { images } from "../data/images";
+
+const path = "/about/";
+const title = "About Warrior Removals | Local Movers in WN1";
+const description =
+  "Warrior Removals is an independent moving company based on Standishgate, WN1. House, office, student and piano removals across Wigan, rated 5.0/5 on Google.";
+const crumbs = [{ name: "About", path }];
+const schema = buildSchemaGraph({ pageType: "webpage", path, title, description, breadcrumbs: crumbs });
+---
+<BaseLayout {title} {description} {path} {schema}>
+  <PageHero
+    title="About Warrior Removals"
+    lede="An independent removals company based in WN1, covering Wigan, Greater Manchester and the UK mainland."
+    crumbs={crumbs}
+  />
+
+  <section class="section">
+    <div class="container split">
+      <div class="prose">
+        <h2>Who we are</h2>
+        <p>
+          Warrior Removals is a local moving company based on Standishgate in WN1, at the same
+          pin as our Google Business Profile. We move homes, offices, students, pianos and furniture
+          across Wigan and the surrounding towns, with crews who know the terraces, one-way streets and
+          estate cul-de-sacs from daily work, not from a map on the morning of your job.
+        </p>
+        <p>
+          The business is built around one idea: a move done properly, at a fair fixed price, by
+          people who turn up when they said they would. We are not a national franchise or a
+          lead-generation broker, when you book with us, our crew loads your belongings and delivers
+          them to your new address. That matters for accountability, insurance and the simple
+          practical question of who to call if something needs adjusting on the day.
+        </p>
+        <p>
+          Our fleet is 3.5-tonne Luton vans, the right size for Wigan's terraced streets and
+          tight corners, and large enough that most family homes move in one or two
+          well-planned loads. Every van carries furniture blankets, straps, sack trucks, dollies and
+          tools for dismantling and reassembly as standard. We do not hold an O-licence because our
+          vehicles stay below the 3,500 kg threshold; that is an honest description of how we
+          operate, not something we hide.
+        </p>
+
+        <h2>How we work</h2>
+        <p>
+          Every job starts with understanding your move: property size, access, parking, what needs
+          packing, and if furniture must be dismantled. For larger homes we do a free survey,
+          in person or by video, so volume and access are seen before we quote. You can also use our
+          <a href="/moving-cost-calculator/">moving cost calculator</a> for a guide estimate first;
+          the survey turns that into a fixed written price valid for three months.
+        </p>
+        <p>
+          On moving day, the agreed crew wraps and loads room by room, secures everything in the van,
+          and places items in the correct rooms at your new home. Optional
+          <a href="/packing-services/">packing services</a> can be booked for the day before so
+          loading is efficient. We work seven days a week, {business.hours.label}, including
+          weekends at the same rates, important for tenancy completions and office relocations that
+          cannot wait until Monday.
+        </p>
+
+        <h2>What you can hold us to</h2>
+        <ul class="checklist">
+          <li><Icon name="check" /> <span><strong>{business.rating.display}/5 on Google</strong>, read reviews on <a href={business.hasMap} rel="noopener" target="_blank">our Google profile</a>.</span></li>
+          <li><Icon name="check" /> <span><strong>£50,000 goods-in-transit cover</strong> per vehicle load and <strong>£1 million public liability</strong>, written into <a href="/terms-and-conditions/">our terms</a>.</span></li>
+          <li><Icon name="check" /> <span><strong>Fixed written quotes</strong> after survey, price, crew and timings agreed before the job starts.</span></li>
+          <li><Icon name="check" /> <span><strong>Seven-day availability</strong>, {business.hours.label} every day, weekends at weekday rates.</span></li>
+          <li><Icon name="check" /> <span><strong>Local knowledge</strong> of Standish, Hindley, Leigh, Atherton and the rest of the towns we work every week.</span></li>
+        </ul>
+
+        <h2>What we move, and what we do not</h2>
+        <p>
+          We are a household and commercial removals company. We move furniture, boxes, appliances,
+          office equipment, pianos and the contents of homes, flats, student rooms and workplaces
+          from one address to another. We offer packing, dismantling and reassembly, and long-distance
+          moves anywhere on the UK mainland.
+        </p>
+        <p>
+          We deliberately do not offer waste or rubbish clearance, house clearance, international
+          shipping, storage, or single-item courier work. Some listings confuse moving companies
+          with waste carriers. We are not a waste business and we do not take rubbish or unwanted
+          items for disposal as part of a move.
+        </p>
+
+        <h2>Wigan, Greater Manchester and the UK mainland</h2>
+        <p>
+          From our WN1 base we cover Wigan town centre, Standish, Hindley, Leigh, Atherton,
+          Ashton-in-Makerfield, Orrell, Billinge and the wider borough, plus inter-city routes to
+          Manchester, Liverpool, Bolton, Preston, Warrington and St Helens. If you are moving within Greater Manchester or
+          further afield, <a href="/contact/">contact us</a> or call {business.phoneDisplay} for a
+          straight answer on availability and price.
+        </p>
+      </div>
+
+      <div class="media-frame sticky-side">
+        <img src={images.fleet.src} alt={images.fleet.alt} width="720" height="540" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</BaseLayout>

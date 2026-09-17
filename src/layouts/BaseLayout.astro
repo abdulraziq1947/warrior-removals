@@ -1,0 +1,69 @@
+---
+import "@fontsource-variable/outfit";
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import JsonLd from "../components/JsonLd.astro";
+import { absoluteUrl } from "../lib/site";
+import { images } from "../data/images";
+import { metaKeywords, trimDescription } from "../lib/seo";
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  schema: Record<string, unknown>;
+  ogImage?: string;
+  keywords?: string;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  path,
+  schema,
+  ogImage = images.hero.src,
+  keywords,
+  noindex = false,
+} = Astro.props;
+
+const canonical = absoluteUrl(path);
+const metaDescription = trimDescription(description);
+const metaKeywordsContent = keywords ?? metaKeywords(path);
+const fullTitle = title.includes("Warrior Removals") ? title : `${title} | Warrior Removals`;
+const robots = noindex ? "noindex, follow" : "index, follow";
+---
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={metaDescription} />
+    <meta name="keywords" content={metaKeywordsContent} />
+    <meta name="robots" content={robots} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#14161a" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Warrior Removals" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={absoluteUrl(ogImage)} />
+    <meta property="og:locale" content="en_GB" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={metaDescription} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <JsonLd data={schema} />
+  </body>
+</html>

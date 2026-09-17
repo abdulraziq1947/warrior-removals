@@ -1,0 +1,81 @@
+---
+import { business } from "../data/business";
+import Logo from "./Logo.astro";
+import Icon from "./Icon.astro";
+
+const year = new Date().getFullYear();
+const footerAreas = [
+  { name: "Wigan Town Centre", slug: "wigan-town-centre" },
+  { name: "Standish", slug: "standish" },
+  { name: "Hindley", slug: "hindley" },
+  { name: "Leigh", slug: "leigh" },
+  { name: "Atherton", slug: "atherton" },
+  { name: "Ashton-in-Makerfield", slug: "ashton-in-makerfield" },
+  { name: "Orrell", slug: "orrell" },
+  { name: "Billinge", slug: "billinge" },
+];
+---
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <a class="logo" href="/" aria-label="Warrior Removals, home">
+          <Logo />
+          <span class="logo-text">
+            <strong>Warrior Removals</strong>
+            <span>Moving Greater Manchester</span>
+          </span>
+        </a>
+        <p>
+          {business.address.streetAddress}, {business.address.addressLocality}, {business.address.postalCode}<br />
+          Open {business.hours.label}, seven days a week<br />
+          £50,000 goods-in-transit &amp; £1m public liability cover
+        </p>
+        <a class="footer-phone" href={`tel:${business.phoneE164}`}>{business.phoneDisplay}</a>
+      </div>
+
+      <nav aria-label="Services">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="/house-removals-wigan/">House Removals</a></li>
+          <li><a href="/office-removals-wigan/">Office Removals</a></li>
+          <li><a href="/student-removals-wigan/">Student Removals</a></li>
+          <li><a href="/piano-removals-wigan/">Piano Removals</a></li>
+          <li><a href="/furniture-removals/">Furniture Removals</a></li>
+          <li><a href="/packing-services/">Packing Services</a></li>
+          <li><a href="/services/">All services →</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Areas">
+        <h4>Areas</h4>
+        <ul>
+          {footerAreas.map((a) => (
+            <li><a href={`/areas/${a.slug}/`}>{a.name}</a></li>
+          ))}
+          <li><a href="/areas/">All 30 areas →</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Company">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about/">About us</a></li>
+          <li><a href="/reviews/">Reviews</a></li>
+          <li><a href="/moving-cost-calculator/">Cost calculator</a></li>
+          <li><a href="/guides/">Moving guides</a></li>
+          <li><a href="/routes/">Long-distance routes</a></li>
+          <li><a href="/faq/">FAQ</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© {year} {business.name}. All rights reserved.</span>
+      <span>
+        <a href="/terms-and-conditions/">Terms &amp; Conditions</a> · <a href="/privacy-policy/">Privacy Policy</a>
+      </span>
+    </div>
+  </div>
+</footer>

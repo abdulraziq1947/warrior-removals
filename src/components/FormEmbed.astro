@@ -1,0 +1,19 @@
+---
+import { business } from "../data/business";
+import Icon from "./Icon.astro";
+
+interface Props {
+  heading?: string;
+}
+const { heading = "Get your free quote" } = Astro.props;
+---
+<div class="panel" id="enquiry">
+  <h2>{heading}</h2>
+  <p style="color: var(--muted); margin-top: -0.4rem;">
+    Tell us about your move and we'll come back with a clear written price, no obligation.
+    Call <a href={`tel:${business.phoneE164}`}><strong>{business.phoneDisplay}</strong></a> any day,
+    open {business.hours.label}.
+  </p>
+  <div id="removals-enquiry"></div>
+  <script is:inline src="https://removals-crm.com/forms/embed.js" data-primary="14161a" data-accent="e85d04" data-container="removals-enquiry"></script>
+</div>
